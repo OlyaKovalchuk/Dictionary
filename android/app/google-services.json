@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "262919773886",
+    "project_id": "dictionary-6ebc0",
+    "storage_bucket": "dictionary-6ebc0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:262919773886:android:276ae27d852ea15c3248ef",
+        "android_client_info": {
+          "package_name": "com.kovalchuk.dictionary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "262919773886-2hdc87h7eousfsf4lcrsp1m2bhfigjeq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kovalchuk.dictionary",
+            "certificate_hash": "8818eaef059f384cef795625a93534fcce8e1e19"
+          }
+        },
+        {
+          "client_id": "262919773886-5nv1nkifeibnt8tr70o42d327n7qts43.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kovalchuk.dictionary",
+            "certificate_hash": "a98f7a7c75b597af477324d07ee07138c6029896"
+          }
+        },
+        {
+          "client_id": "262919773886-lqqbrq574kpvb004gjmuf5jo12ui9gp8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kovalchuk.dictionary",
+            "certificate_hash": "377cdfb047afbc899da531c3af76b804a1135752"
+          }
+        },
+        {
+          "client_id": "262919773886-71im6qm31q4g9gh0fa3dbabnjcr84i4i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1giH6uHdBnfJ0fHBpduUJWWnFSs7Z52I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "262919773886-71im6qm31q4g9gh0fa3dbabnjcr84i4i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

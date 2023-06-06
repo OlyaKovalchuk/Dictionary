@@ -1,0 +1,68 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+*.ipa
+*.lock
+*.zip
+.metadata
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+.lock/
+/build/
+
+# Web related
+lib/generated_plugin_registrant.dart
+
+# Exceptions to above rules.
+!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+!android/gradlew
+!android/gradlew.bat
+!android/gradle/wrapper/gradle-wrapper.jar
+
+# iOS
+/ios/fastlane/report.xml
+/ios/Flutter/.last_build_id
+/android/fastlane/report.xml
+
+# Quality report
+code-quality-report.json
+
+# test
+test/presentation.pages/*/failures/*.png
+
+# Mason
+.mason
+mason-lock.json
+# Creds
+.fvm/flutter_sdk
+/ios/build/
+android/fastlane/.env.default
+android/fastlane/credentials/dictionary_google_store_creds.json
+
+# Web
+web/firebase_config.js

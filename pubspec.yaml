@@ -1,0 +1,86 @@
+name: dictionary
+description: The app for learnings English words
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <3.1.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+  intl: 0.18.0
+  flutter_localization: 0.1.11
+
+  # Firebase
+  firebase_auth: 4.6.1
+  firebase_core: 2.13.0
+
+  # Google
+  google_sign_in: 6.1.0
+
+  # Architecture
+  flutter_riverpod: 2.3.6
+
+  # Network
+  dio: 5.1.1
+  connectivity_plus: 3.0.6
+
+  # Database
+  isar: 3.1.0+1
+  isar_flutter_libs: 3.1.0+1
+  isar_generator: 3.1.0+1
+  shared_preferences: 2.1.1
+
+  # UI
+  recase: 4.1.0
+  render_metrics: 2.0.2
+  appinio_swiper: 2.0.0
+  flutter_svg: 2.0.6
+
+
+  # Others
+  equatable: 2.0.5
+  uuid: 3.0.7
+  flutter_dotenv: 5.0.2
+  logger: 1.3.0
+  email_validator: 2.1.17
+
+
+  # Linter
+  dart_code_metrics: 5.7.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+  build_runner: 2.4.4
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/fonts/
+    - assets/images/
+    - assets/icons/
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/roboto/Roboto-Black.ttf
+        - asset: assets/fonts/roboto/Roboto-Bold.ttf
+        - asset: assets/fonts/roboto/Roboto-Light.ttf
+        - asset: assets/fonts/roboto/Roboto-Medium.ttf
+        - asset: assets/fonts/roboto/Roboto-Regular.ttf
+        - asset: assets/fonts/roboto/Roboto-Thin.ttf
+    - family: Futura
+      fonts:
+        - asset: assets/fonts/futura/FuturaDemiC.ttf
+
+flutter_intl:
+  enabled: true
+  main_locale: en_US

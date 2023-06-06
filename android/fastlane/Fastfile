@@ -1,0 +1,50 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+
+platform :android do
+    desc "New Build to App Distribution Beta"
+    lane :deploy do
+        Dir.chdir("../..") do
+               sh "fvm flutter clean"
+               sh "fvm flutter packages get"
+               sh "fvm flutter build apk"
+
+        end
+        firebase_app_distribution(
+               app: ENV["APPID"],
+               firebase_cli_path: "/usr/local/bin/firebase",
+               release_notes_file: "../fastlane/notes.txt",
+               groups_file: "../fastlane/groups.txt",
+               apk_path: "../build/app/outputs/apk/release/app-release.apk"
+        )
+#        gradle(task: "createReleaseBuildAndUploadToBeta")
+    end
+
+    desc "New Build App Bundle for Google Play"
+    lane :deploy_google_play do
+        Dir.chdir("../..") do
+            sh "fvm flutter clean"
+            sh "fvm flutter packages get"
+            sh "fvm flutter build appbundle"
+        end
+        upload_to_play_store(
+            track: "internal",
+            release_status: "draft",
+            aab: "../build/app/outputs/bundle/release/app-release.aab",
+            json_key: "fastlane/credentials/dictionary_google_store_creds.json"
+        )
+    end
+end
