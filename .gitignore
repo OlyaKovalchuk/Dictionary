@@ -66,3 +66,4 @@ android/fastlane/credentials/dictionary_google_store_creds.json
 
 # Web
 web/firebase_config.js
+lib/firebase_options.dart
