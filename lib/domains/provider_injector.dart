@@ -15,11 +15,12 @@ class ProviderInjector {
   ProviderInjector._();
 
   /// App
-  static final appProvider =
-      NotifierProvider<AppStateNotifier, AppState>(AppStateNotifier.new);
+  static final appProvider = NotifierProvider<AppStateNotifier, AppState>(
+    AppStateNotifier.new,
+  );
 
   /// Shared Prefs
-  static final sharedPrefsProvider = Provider<SharedPrefsProvider>(
+  static final sharedPrefsProvider = Provider.autoDispose<SharedPrefsProvider>(
     (ref) {
       final sharedPrefsRepo = ref.watch(_sharedPrefRepoProvider);
 
@@ -29,18 +30,20 @@ class ProviderInjector {
 
   /// Auth
   static final signUpStateProvider =
-      NotifierProvider<SignUpStateNotifier, BaseState>(SignUpStateNotifier.new);
+      NotifierProvider.autoDispose<SignUpStateNotifier, BaseState>(
+    SignUpStateNotifier.new,
+  );
 
-  static final authProvider = Provider<AuthProvider>((ref) {
+  static final authProvider = Provider.autoDispose<AuthProvider>((ref) {
     final authModule = ref.watch(_authModuleProvider);
 
     return AuthProvider(authModule);
   });
 
-  static final _authServiceProvider = Provider<IAuthService>(
+  static final _authServiceProvider = Provider.autoDispose<IAuthService>(
     (ref) => FirebaseAuthDataSource(),
   );
-  static final _authModuleProvider = Provider<AuthModule>(
+  static final _authModuleProvider = Provider.autoDispose<AuthModule>(
     (ref) {
       final authService = ref.watch(_authServiceProvider);
 
@@ -48,7 +51,8 @@ class ProviderInjector {
     },
   );
 
-  static final _sharedPrefRepoProvider = Provider<ISharedPreferenceRepository>(
+  static final _sharedPrefRepoProvider =
+      Provider.autoDispose<ISharedPreferenceRepository>(
     (ref) => SharedPreferenceRepository(),
   );
 }
