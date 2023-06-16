@@ -31,4 +31,11 @@ final class SignUpStateNotifier extends BaseStateNotifier {
       onComplete: (_) => SignedUpState(),
     );
   }
+
+  Future<void> signUpWithGoogle() {
+    return futureHandle(
+      func: _authProvider.signInWithGoogle,
+      onComplete: (_) => SignedUpState(),
+    );
+  }
 }

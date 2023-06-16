@@ -15,9 +15,11 @@ class DctTextField extends TextFormField {
     Widget? suffix,
     String? hintText,
   }) : super(
-          style: DctStyles.b1BlackRegular16Roboto,
+          style: DctStyles.b2BlackRegular14Roboto,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: InputDecoration(
+            isCollapsed: true,
+            contentPadding: const EdgeInsets.all(16),
             border: textFieldBorder,
             disabledBorder: textFieldBorder,
             enabledBorder: textFieldBorder,

@@ -44,7 +44,7 @@ class DctStyles {
     color: DctColors.wWhite,
   );
   static const b1BlackRegular16Roboto = TextStyle(
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: FontWeight.w400,
     fontFamily: _DctFontFamilies.roboto,
     color: DctColors.tBlackLight,
@@ -83,8 +83,8 @@ class DctStyles {
     fontFamily: _DctFontFamilies.roboto,
     color: DctColors.tBlackLight,
   );
-  static const b3GreySemiBold12 = TextStyle(
-    fontSize: 12,
+  static const b3GreySemiBold14 = TextStyle(
+    fontSize: 14,
     fontWeight: FontWeight.w500,
     fontFamily: _DctFontFamilies.futura,
     color: DctColors.tBaseGrey,

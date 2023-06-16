@@ -1,6 +1,7 @@
 import 'package:dictionary/domains/provider_injector.dart';
 import 'package:dictionary/generated/assets.dart';
 import 'package:dictionary/presentation/pages/bottom_nav_page.dart';
+import 'package:dictionary/presentation/pages/sign_in/sign_in_page.dart';
 import 'package:dictionary/presentation/pages/sign_up/state_notifier/sign_up_state.dart';
 import 'package:dictionary/res/dct_styles.dart';
 import 'package:dictionary/utils/base/base_page_state.dart';
@@ -8,6 +9,7 @@ import 'package:dictionary/utils/base/base_state_notifier.dart';
 import 'package:dictionary/utils/base_state.dart';
 import 'package:dictionary/utils/extensions/context_ext.dart';
 import 'package:dictionary/utils/validators.dart';
+import 'package:dictionary/widgets/already_have_an_account_widget.dart';
 import 'package:dictionary/widgets/dct_app_bar.dart';
 import 'package:dictionary/widgets/dct_elevated_button.dart';
 import 'package:dictionary/widgets/dct_text_field.dart';
@@ -155,6 +157,11 @@ class _SignUpPageState extends BasePageState<SignUpPage> {
                     ),
                   ),
                 ),
+
+                const SizedBox(height: 8),
+                AlreadyHaveAnAccountWidget(
+                  onSignInTapped: _moveToSignIn,
+                ),
               ],
             ),
           ),
@@ -175,6 +182,8 @@ class _SignUpPageState extends BasePageState<SignUpPage> {
   }
 
   void _signUpWithGoogle() {
-    ref.read(ProviderInjector.authProvider).signInWithGoogle();
+    ref.read(ProviderInjector.signUpStateProvider.notifier).signUpWithGoogle();
   }
+
+  void _moveToSignIn() => context.pushReplacementNamed(SignInPage.routeName);
 }

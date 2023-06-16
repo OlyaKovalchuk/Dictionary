@@ -1,11 +1,10 @@
 import 'dart:async';
 
 import 'package:dictionary/utils/base_state.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 mixin StateNotifierMixin on AutoDisposeNotifier<BaseState> {
-  bool get isProgressState => state is ProgressState;
-
   Future<void> futureHandle({
     required Future Function() func,
     required OnComplete onComplete,
@@ -26,7 +25,17 @@ mixin StateNotifierMixin on AutoDisposeNotifier<BaseState> {
   }
 
   ErrorState errorHandler(Object error, StackTrace stackTrace) {
-    return ErrorState(title: error.toString(), message: stackTrace.toString());
+    if (error is FirebaseAuthException) {
+      return ErrorState(
+        title: error.toString(),
+        message: error.message,
+      );
+    }
+
+    return ErrorState(
+      title: error.toString(),
+      message: stackTrace.toString(),
+    );
   }
 }
 

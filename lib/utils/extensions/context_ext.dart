@@ -18,4 +18,7 @@ extension ContextExt on BuildContext {
         (route) => false,
         arguments: arguments,
       );
+
+  Future<T?> pushReplacementNamed<T extends Object?>(String routeName) =>
+      Navigator.pushReplacementNamed(this, routeName);
 }

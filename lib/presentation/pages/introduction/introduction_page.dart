@@ -4,6 +4,7 @@ import 'package:dictionary/presentation/pages/sign_in/sign_in_page.dart';
 import 'package:dictionary/presentation/pages/sign_up/sign_up_page.dart';
 import 'package:dictionary/res/dct_styles.dart';
 import 'package:dictionary/utils/extensions/context_ext.dart';
+import 'package:dictionary/widgets/already_have_an_account_widget.dart';
 import 'package:dictionary/widgets/dct_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -41,18 +42,8 @@ class IntroductionPage extends ConsumerWidget {
                 onPressed: () => _createAccountTapped(context, ref),
                 text: context.strings.createAnAccount,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    context.strings.alreadyHaveAnAccount,
-                    style: DctStyles.b3GreySemiBold12,
-                  ),
-                  TextButton(
-                    onPressed: () => _signInTapped(context, ref),
-                    child: Text(context.strings.signIn),
-                  ),
-                ],
+              AlreadyHaveAnAccountWidget(
+                onSignInTapped: () => _signInTapped(context, ref),
               ),
             ],
           ),

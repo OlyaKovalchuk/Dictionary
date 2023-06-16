@@ -2,6 +2,7 @@ import 'package:dictionary/data/dto/user_dto.dart';
 import 'package:dictionary/data/requests/sign_up_request.dart';
 import 'package:dictionary/domains/repositories/i_auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthDataSource implements IAuthService {
   final _firebaseAuth = FirebaseAuth.instance;
@@ -13,13 +14,8 @@ class FirebaseAuthDataSource implements IAuthService {
       password: request.password,
     );
     await _firebaseAuth.currentUser?.updateDisplayName(request.name);
-    final currentUser = _firebaseAuth.currentUser;
 
-    if (currentUser != null) {
-      return UserDTO.fromFirebaseUser(currentUser);
-    }
-
-    return null;
+    return _getUser();
   }
 
   @override
@@ -29,9 +25,19 @@ class FirebaseAuthDataSource implements IAuthService {
   }
 
   @override
-  Future<UserDTO?> signInWithGoogle() {
-    // TODO: implement signInWithGoogle
-    throw UnimplementedError();
+  Future<UserDTO?> signInWithGoogle() async {
+    final googleUser = await GoogleSignIn().signIn();
+
+    final googleAuth = await googleUser?.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    await _firebaseAuth.signInWithCredential(credential);
+
+    return _getUser();
   }
 
   @override
@@ -43,5 +49,15 @@ class FirebaseAuthDataSource implements IAuthService {
   Future<void> restorePassword(String password) {
     // TODO: implement restorePassword
     throw UnimplementedError();
+  }
+
+  UserDTO? _getUser() {
+    final currentUser = _firebaseAuth.currentUser;
+
+    if (currentUser != null) {
+      return UserDTO.fromFirebaseUser(currentUser);
+    }
+
+    return null;
   }
 }
