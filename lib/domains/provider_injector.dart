@@ -1,4 +1,6 @@
+import 'package:app_links/app_links.dart';
 import 'package:dictionary/data/firebase/firebase_auth/firebase_auth_data_source.dart';
+import 'package:dictionary/data/services/deep_links_handler.dart';
 import 'package:dictionary/data/shared_preference/shared_preference_repository.dart';
 import 'package:dictionary/domains/app_provider/app_state.dart';
 import 'package:dictionary/domains/app_provider/app_state_notifier.dart';
@@ -45,6 +47,12 @@ class ProviderInjector {
     return AuthProvider(authModule);
   });
 
+  /// Deeplinks
+  static final deepLinksProvider =
+      Provider.autoDispose<DeepLinksHandler>((ref) {
+    return DeepLinksHandler();
+  });
+
   static final _authServiceProvider = Provider.autoDispose<IAuthService>(
     (ref) => FirebaseAuthDataSource(),
   );
@@ -59,5 +67,8 @@ class ProviderInjector {
   static final _sharedPrefRepoProvider =
       Provider.autoDispose<ISharedPreferenceRepository>(
     (ref) => SharedPreferenceRepository(),
+  );
+  static final _appLinksProvider = Provider.autoDispose<AppLinks>(
+    (ref) => AppLinks(),
   );
 }

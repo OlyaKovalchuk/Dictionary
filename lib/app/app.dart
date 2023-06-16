@@ -58,6 +58,8 @@ class _AppState extends ConsumerState<App> {
           nav?.context.pushNamedAndRemoveAll(IntroductionPage.routeName);
         }
       }
+    } else if (state is OpenPageState) {
+      nav?.context.pushNamedAndRemoveAll(state.routeName);
     }
   }
 }

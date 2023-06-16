@@ -11,3 +11,9 @@ class SplashEndedState extends AppState {
   final bool didTheUserFinishIntro;
   final bool isUserLogged;
 }
+
+class OpenPageState extends AppState {
+  OpenPageState(this.routeName);
+
+  final String routeName;
+}
