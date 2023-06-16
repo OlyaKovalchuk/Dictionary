@@ -1,22 +1,22 @@
 import 'package:dictionary/domains/provider_injector.dart';
-import 'package:dictionary/generated/assets.dart';
 import 'package:dictionary/presentation/pages/bottom_nav_page.dart';
 import 'package:dictionary/presentation/pages/sign_in/sign_in_page.dart';
 import 'package:dictionary/presentation/pages/sign_up/state_notifier/sign_up_state.dart';
+import 'package:dictionary/presentation/pages/sign_up/state_notifier/sign_up_state_notifier.dart';
 import 'package:dictionary/res/dct_styles.dart';
 import 'package:dictionary/utils/base/base_page_state.dart';
-import 'package:dictionary/utils/base/base_state_notifier.dart';
 import 'package:dictionary/utils/base_state.dart';
 import 'package:dictionary/utils/extensions/context_ext.dart';
 import 'package:dictionary/utils/validators.dart';
-import 'package:dictionary/widgets/already_have_an_account_widget.dart';
+import 'package:dictionary/widgets/auth_widgets/already_have_an_account_widget.dart';
+import 'package:dictionary/widgets/auth_widgets/google_button.dart';
+import 'package:dictionary/widgets/auth_widgets/or_widget.dart';
 import 'package:dictionary/widgets/dct_app_bar.dart';
 import 'package:dictionary/widgets/dct_elevated_button.dart';
 import 'package:dictionary/widgets/dct_text_field.dart';
 import 'package:dictionary/widgets/single_scroll_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SignUpPage extends ConsumerStatefulWidget {
   const SignUpPage({super.key});
@@ -27,14 +27,14 @@ class SignUpPage extends ConsumerStatefulWidget {
   ConsumerState<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _SignUpPageState extends BasePageState<SignUpPage> {
+class _SignUpPageState extends BasePageState<SignUpPage, SignUpStateNotifier> {
   final _formKey = GlobalKey<FormState>();
   final _emailCtr = TextEditingController();
   final _nameCtr = TextEditingController();
   final _passCtr = TextEditingController();
 
   @override
-  AutoDisposeNotifierProvider<BaseStateNotifier, BaseState> stateProvider =
+  AutoDisposeNotifierProvider<SignUpStateNotifier, BaseState> stateProvider =
       ProviderInjector.signUpStateProvider;
 
   @override
@@ -123,38 +123,15 @@ class _SignUpPageState extends BasePageState<SignUpPage> {
                 const SizedBox(height: 4),
 
                 /// OR text
-                Row(
-                  children: [
-                    const Flexible(
-                      child: Divider(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 6),
-                      child: Text(
-                        strings.or,
-                        style: DctStyles.b2GradientRegular14,
-                      ),
-                    ),
-                    const Flexible(
-                      child: Divider(),
-                    ),
-                  ],
-                ),
+                const OrWidget(),
                 const SizedBox(height: 4),
 
                 /// Sign up with Google btn
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: OutlinedButton(
+                  child: GoogleButton(
+                    title: strings.signUpWithGmail,
                     onPressed: _signUpWithGoogle,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(Assets.iconsGoogleIc),
-                        const SizedBox(width: 4),
-                        Text(strings.signUpWithGmail),
-                      ],
-                    ),
                   ),
                 ),
 
@@ -173,7 +150,7 @@ class _SignUpPageState extends BasePageState<SignUpPage> {
   void _signUp() {
     final isFormValid = _formKey.currentState?.validate();
     if (isFormValid == true) {
-      ref.read(ProviderInjector.signUpStateProvider.notifier).signUpWithEmail(
+      ref.read(stateProvider.notifier).signUpWithEmail(
             name: _nameCtr.text.trim(),
             email: _emailCtr.text.trim(),
             password: _passCtr.text.trim(),
@@ -182,7 +159,7 @@ class _SignUpPageState extends BasePageState<SignUpPage> {
   }
 
   void _signUpWithGoogle() {
-    ref.read(ProviderInjector.signUpStateProvider.notifier).signUpWithGoogle();
+    ref.read(stateProvider.notifier).signUpWithGoogle();
   }
 
   void _moveToSignIn() => context.pushReplacementNamed(SignInPage.routeName);

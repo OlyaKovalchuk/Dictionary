@@ -1,4 +1,5 @@
 import 'package:dictionary/data/dto/user_dto.dart';
+import 'package:dictionary/data/requests/sign_in_request.dart';
 import 'package:dictionary/data/requests/sign_up_request.dart';
 import 'package:dictionary/domains/repositories/i_auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,9 +23,13 @@ class FirebaseAuthDataSource implements IAuthService {
   }
 
   @override
-  Future<UserDTO?> signInWithEmail(String email, String password) {
-    // TODO: implement signInWithEmail
-    throw UnimplementedError();
+  Future<UserDTO?> signInWithEmail(SignInRequest request) async {
+    await _firebaseAuth.signInWithEmailAndPassword(
+      email: request.email,
+      password: request.password,
+    );
+
+    return _getUser();
   }
 
   @override

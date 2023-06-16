@@ -8,10 +8,20 @@ extension ContextExt on BuildContext {
 
   bool canPop() => Navigator.canPop(this);
 
-  Future<T?> pushNamedAndRemoveAll<T extends Object?>(
-    String routeName, [
+  Future<T?> pushNamed<T extends Object?>(
+    String routeName, {
     Object? arguments,
-  ]) =>
+  }) =>
+      Navigator.pushNamed(
+        this,
+        routeName,
+        arguments: arguments,
+      );
+
+  Future<T?> pushNamedAndRemoveAll<T extends Object?>(
+    String routeName, {
+    Object? arguments,
+  }) =>
       Navigator.pushNamedAndRemoveUntil(
         this,
         routeName,

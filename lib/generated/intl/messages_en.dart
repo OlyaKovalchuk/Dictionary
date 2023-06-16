@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "createAnAccount":
             MessageLookupByLibrary.simpleMessage("Create an account"),
         "dictionary": MessageLookupByLibrary.simpleMessage("Dictionary."),
+        "dontHaveAnAccount":
+            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "emailIsNotValid":
             MessageLookupByLibrary.simpleMessage("Email is not valid"),
         "emailIsRequired":
@@ -40,6 +42,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterYourPassword":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "error": MessageLookupByLibrary.simpleMessage("Error"),
+        "forgotPassword":
+            MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "hello": MessageLookupByLibrary.simpleMessage("Hello"),
         "intructionText": MessageLookupByLibrary.simpleMessage(
             "We are Dictionary,\nhere you will learn many interesting words, what they mean and how to use them in your vocabulary."),
@@ -59,6 +63,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Password must contain at least 8 symbols"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
+        "signInToYourAccount":
+            MessageLookupByLibrary.simpleMessage("Sign in to your account"),
+        "signInWithGoogle":
+            MessageLookupByLibrary.simpleMessage("Sign in with Google"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
         "signUpWithGmail":
             MessageLookupByLibrary.simpleMessage("Sign up with Gmail")

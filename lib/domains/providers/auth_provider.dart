@@ -1,3 +1,4 @@
+import 'package:dictionary/data/requests/sign_in_request.dart';
 import 'package:dictionary/data/requests/sign_up_request.dart';
 import 'package:dictionary/domains/models/user_model.dart';
 import 'package:dictionary/domains/modules/auth_module.dart';
@@ -12,8 +13,8 @@ class AuthProvider {
   Future<UserModel?> signUp(SignUpRequest request) =>
       _authModule.signUp(request);
 
-  Future<UserModel?> signInWithEmail(String email, String password) =>
-      _authModule.signInWithEmail(email, password);
+  Future<UserModel?> signInWithEmail(SignInRequest request) =>
+      _authModule.signInWithEmail(request);
 
   Future<UserModel?> signInWithGoogle() => _authModule.signInWithGoogle();
 

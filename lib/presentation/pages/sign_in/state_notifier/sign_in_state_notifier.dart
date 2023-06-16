@@ -1,11 +1,11 @@
-import 'package:dictionary/data/requests/sign_up_request.dart';
+import 'package:dictionary/data/requests/sign_in_request.dart';
 import 'package:dictionary/domains/provider_injector.dart';
 import 'package:dictionary/domains/providers/auth_provider.dart';
-import 'package:dictionary/presentation/pages/sign_up/state_notifier/sign_up_state.dart';
+import 'package:dictionary/presentation/pages/sign_in/state_notifier/sign_in_state.dart';
 import 'package:dictionary/utils/base/base_state_notifier.dart';
 import 'package:dictionary/utils/base_state.dart';
 
-final class SignUpStateNotifier extends BaseStateNotifier {
+final class SignInStateNotifier extends BaseStateNotifier {
   late final AuthProvider _authProvider;
 
   @override
@@ -15,27 +15,25 @@ final class SignUpStateNotifier extends BaseStateNotifier {
     return super.build();
   }
 
-  Future<void> signUpWithEmail({
-    required String name,
+  Future<void> signInWithEmail({
     required String email,
     required String password,
-  }) async {
+  }) {
     return futureHandle(
-      func: () => _authProvider.signUp(
-        SignUpRequest(
-          name: name,
+      func: () => _authProvider.signInWithEmail(
+        SignInRequest(
           email: email,
           password: password,
         ),
       ),
-      onComplete: (_) => SignedUpState(),
+      onComplete: (_) => SignedInState(),
     );
   }
 
-  Future<void> signUpWithGoogle() {
+  Future<void> signInWithGoogle() {
     return futureHandle(
       func: _authProvider.signInWithGoogle,
-      onComplete: (_) => SignedUpState(),
+      onComplete: (_) => SignedInState(),
     );
   }
 }

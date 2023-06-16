@@ -7,6 +7,7 @@ import 'package:dictionary/domains/providers/auth_provider.dart';
 import 'package:dictionary/domains/providers/shared_prefs_provider.dart';
 import 'package:dictionary/domains/repositories/i_auth_service.dart';
 import 'package:dictionary/domains/repositories/i_shared_preference_repository.dart';
+import 'package:dictionary/presentation/pages/sign_in/state_notifier/sign_in_state_notifier.dart';
 import 'package:dictionary/presentation/pages/sign_up/state_notifier/sign_up_state_notifier.dart';
 import 'package:dictionary/utils/base_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,6 +33,10 @@ class ProviderInjector {
   static final signUpStateProvider =
       NotifierProvider.autoDispose<SignUpStateNotifier, BaseState>(
     SignUpStateNotifier.new,
+  );
+  static final signInStateProvider =
+      NotifierProvider.autoDispose<SignInStateNotifier, BaseState>(
+    SignInStateNotifier.new,
   );
 
   static final authProvider = Provider.autoDispose<AuthProvider>((ref) {

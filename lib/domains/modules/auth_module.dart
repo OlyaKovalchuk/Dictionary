@@ -1,4 +1,5 @@
 import 'package:dictionary/data/converters/user_dto_converter.dart';
+import 'package:dictionary/data/requests/sign_in_request.dart';
 import 'package:dictionary/data/requests/sign_up_request.dart';
 import 'package:dictionary/domains/models/user_model.dart';
 import 'package:dictionary/domains/repositories/i_auth_service.dart';
@@ -18,9 +19,9 @@ class AuthModule {
         .then(_userConverter.inToOutOrNull);
   }
 
-  Future<UserModel?> signInWithEmail(String email, String password) =>
+  Future<UserModel?> signInWithEmail(SignInRequest request) =>
       _firebaseAuthService
-          .signInWithEmail(email, password)
+          .signInWithEmail(request)
           .then(_userConverter.inToOutOrNull);
 
   Future<UserModel?> signInWithGoogle() => _firebaseAuthService

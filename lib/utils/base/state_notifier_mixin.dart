@@ -2,9 +2,16 @@ import 'dart:async';
 
 import 'package:dictionary/utils/base_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 mixin StateNotifierMixin on AutoDisposeNotifier<BaseState> {
+  @override
+  @mustCallSuper
+  BaseState build() {
+    return InitState();
+  }
+
   Future<void> futureHandle({
     required Future Function() func,
     required OnComplete onComplete,

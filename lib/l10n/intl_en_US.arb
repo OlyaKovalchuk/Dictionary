@@ -22,5 +22,9 @@
   "passwordMustContainAtLeast8Symbols": "Password must contain at least 8 symbols",
   "passwordIsNotValid": "Password is not valid",
   "passwordIsRequired": "Password is required",
-  "error": "Error"
+  "error": "Error",
+  "signInWithGoogle": "Sign in with Google",
+  "dontHaveAnAccount": "Don't have an account?",
+  "signInToYourAccount": "Sign in to your account",
+  "forgotPassword": "Forgot password?"
 }

@@ -122,6 +122,12 @@ class DctStyles {
     foreground: Paint()..shader = DctColors.tRedGradient,
   );
 
+  static final b2GradientRegular14Futura = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    fontFamily: _DctFontFamilies.futura,
+    foreground: Paint()..shader = DctColors.tRedGradient,
+  );
   static final h2GradientBold36 = TextStyle(
     fontSize: 36,
     fontWeight: FontWeight.w700,

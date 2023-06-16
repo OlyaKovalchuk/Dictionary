@@ -4,7 +4,7 @@ import 'package:dictionary/presentation/pages/sign_in/sign_in_page.dart';
 import 'package:dictionary/presentation/pages/sign_up/sign_up_page.dart';
 import 'package:dictionary/res/dct_styles.dart';
 import 'package:dictionary/utils/extensions/context_ext.dart';
-import 'package:dictionary/widgets/already_have_an_account_widget.dart';
+import 'package:dictionary/widgets/auth_widgets/already_have_an_account_widget.dart';
 import 'package:dictionary/widgets/dct_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

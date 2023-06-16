@@ -5,10 +5,9 @@ import 'package:dictionary/widgets/progress_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-abstract class BasePageState<T extends ConsumerStatefulWidget>
-    extends ConsumerState<T> {
-  abstract AutoDisposeNotifierProvider<BaseStateNotifier, BaseState>
-      stateProvider;
+abstract class BasePageState<T extends ConsumerStatefulWidget,
+    Nt extends BaseStateNotifier> extends ConsumerState<T> {
+  abstract AutoDisposeNotifierProvider<Nt, BaseState> stateProvider;
 
   final _isProgress = ValueNotifier<bool>(false);
 

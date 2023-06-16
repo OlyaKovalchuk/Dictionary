@@ -83,7 +83,6 @@ ThemeData get dctTheme => ThemeData(
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          foregroundColor: DctColors.accentColor,
           minimumSize: _minButtonSize,
           textStyle: DctStyles.b1GradientSemiBold16,
           shape: const RoundedRectangleBorder(
