@@ -7,6 +7,8 @@ class AuthProvider {
 
   final AuthModule _authModule;
 
+  bool isUserLogged() => _authModule.isUserLogged();
+
   Future<UserModel?> signUp(SignUpRequest request) =>
       _authModule.signUp(request);
 

@@ -2,8 +2,9 @@ import 'package:dictionary/app/app_routes.dart';
 import 'package:dictionary/domains/app_provider/app_state.dart';
 import 'package:dictionary/domains/provider_injector.dart';
 import 'package:dictionary/generated/l10n.dart';
+import 'package:dictionary/presentation/pages/bottom_nav_page.dart';
 import 'package:dictionary/presentation/pages/introduction/introduction_page.dart';
-import 'package:dictionary/presentation/pages/sign_up/sign_up_page.dart';
+import 'package:dictionary/presentation/pages/sign_in/sign_in_page.dart';
 import 'package:dictionary/presentation/pages/splash/splash_page.dart';
 import 'package:dictionary/res/dct_theme.dart';
 import 'package:dictionary/utils/extensions/context_ext.dart';
@@ -48,10 +49,14 @@ class _AppState extends ConsumerState<App> {
 
   void _onStateListener(_, AppState state) {
     if (state is SplashEndedState) {
-      if (state.didTheUserFinishIntro) {
-        nav?.context.pushNamedAndRemoveAll(SignUpPage.routeName);
+      if (state.isUserLogged) {
+        nav?.context.pushNamedAndRemoveAll(BottomNavPage.routeName);
       } else {
-        nav?.context.pushNamedAndRemoveAll(IntroductionPage.routeName);
+        if (state.didTheUserFinishIntro) {
+          nav?.context.pushNamedAndRemoveAll(SignInPage.routeName);
+        } else {
+          nav?.context.pushNamedAndRemoveAll(IntroductionPage.routeName);
+        }
       }
     }
   }

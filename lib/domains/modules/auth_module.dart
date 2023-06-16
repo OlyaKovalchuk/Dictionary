@@ -10,6 +10,8 @@ class AuthModule {
 
   final _userConverter = UserDTOConverter();
 
+  bool isUserLogged() => _firebaseAuthService.isUserLogged();
+
   Future<UserModel?> signUp(SignUpRequest request) {
     return _firebaseAuthService
         .signUp(request)

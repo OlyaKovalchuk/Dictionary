@@ -8,6 +8,9 @@ class FirebaseAuthDataSource implements IAuthService {
   final _firebaseAuth = FirebaseAuth.instance;
 
   @override
+  bool isUserLogged() => _firebaseAuth.currentUser != null;
+
+  @override
   Future<UserDTO?> signUp(SignUpRequest request) async {
     await _firebaseAuth.createUserWithEmailAndPassword(
       email: request.email,
